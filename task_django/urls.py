@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tasks.views import get_tasks, toggle_status, delete_task
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
