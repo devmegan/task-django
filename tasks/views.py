@@ -6,6 +6,9 @@ from .forms import TaskForm
 
 def get_tasks(request):
     """ view for main tasks list """
+    colour = ColourTheme.objects.all()
+    add_task_form = TaskForm()
+
     # task filtering
     filter = 'All'
     if request.GET:
@@ -23,14 +26,23 @@ def get_tasks(request):
             tasks = Task.objects.all()
     else:
         tasks = Task.objects.all()
-    colour = ColourTheme.objects.all()
-    add_task_form = TaskForm()
+
+
     if request.method == 'POST':
-        if 'taskId' in request.POST:
+        # add a task
+        if 'name' in request.POST:
             add_task_form = TaskForm(request.POST)
             if add_task_form.is_valid():
                 add_task_form.save()
             return redirect('tasks')
+        # edit a task
+        elif 'taskId' in request.POST:
+            # form with update item request
+            task_to_update = request.POST['taskId']
+            task = get_object_or_404(Task, id=task_to_update)
+            task.name = request.POST['taskNewName']
+            task.save()
+        # change colour theme
         elif 'colour' in request.POST:
             # handle users choice of colour theme
             colourObj = get_object_or_404(ColourTheme)
