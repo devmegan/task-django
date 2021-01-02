@@ -7,34 +7,36 @@
     <title>Tasks | Django</title>
 </head>
  <body class="p-0 m-0">
-    <div class="row no-gutters bg-warning">
-        <div class="col-10 col-offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 bg-white">
-            <div class="text-center py-4">
-                <h1 class="display-4 text-uppercase">Tasks</h1>
-            </div>
-            <div>
-                <h2 class="lead"><bold>All Tasks</bold></h2>
-            </div>
-            {% for task in tasks %}
-            <div class="card mb-2">
-                <div class="card-body">
-                    {% if task.done %}
-                    <a href="/toggle/{{ task.id }}"><i class="far fa-check-square text-success"></i></a>
-                    {% else %}
-                    <a href="/toggle/{{ task.id }}"><i class="far fa-square text-warning"></i></a>
-                    {% endif %}
-                    <p class="m-0 p-0 d-inline lead">{{ task.name }}</p>
-                    <div class="text-right d-inline">
-                    <a href="/edit/{{ task.id }}"><i class="fas fa-edit text-muted"></i></a>
-                    <a href="/delete/{{ task.id }}"><i class="fas fa-trash text-muted"></i></a>
+    <div class="container-fluid page-container">
+        <div class="row no-gutters bg-warning">
+            <div class="col-10 col-offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 bg-white">
+                <div class="text-center py-4">
+                    <h1 class="display-4 text-uppercase">Tasks</h1>
+                </div>
+                <div>
+                    <h2 class="lead"><bold>All Tasks</bold></h2>
+                </div>
+                {% for task in tasks %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        {% if task.done %}
+                        <a href="/toggle/{{ task.id }}"><i class="far fa-check-square text-success"></i></a>
+                        {% else %}
+                        <a href="/toggle/{{ task.id }}"><i class="far fa-square text-warning"></i></a>
+                        {% endif %}
+                        <p class="m-0 p-0 d-inline lead">{{ task.name }}</p>
+                        <div class="text-right d-inline">
+                        <a href="/edit/{{ task.id }}"><i class="fas fa-edit text-muted"></i></a>
+                        <a href="/delete/{{ task.id }}"><i class="fas fa-trash text-muted"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-            <div class="card mb-2">
-                <div class="card-body">
-                    <a href="/add"><i class="fas fa-plus text-info"></i></a>
-                    <p class="m-0 p-0 d-inline lead">Add a Task</p>
+                {% endfor %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <a href="/add"><i class="fas fa-plus text-info"></i></a>
+                        <p class="m-0 p-0 d-inline lead">Add a Task</p>
+                    </div>
                 </div>
             </div>
         </div>
