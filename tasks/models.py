@@ -10,3 +10,10 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ColourTheme(models.Model):
+    colour = models.CharField(max_length=20, null=False, default="yellow")
+
+    def __str__(self):
+        return self.colour
