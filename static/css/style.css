@@ -3,6 +3,7 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
 /* element containers */
 .page-container {
     min-height: 100vh;
@@ -60,4 +61,12 @@ body {
 /* hover effects */
 #add-task-card:hover {
     cursor: pointer;
+}
+
+/* typography */
+.spaced-1 {
+    letter-spacing: 1px;
+}
+.spaced-2 {
+    letter-spacing: 2px;
 }
