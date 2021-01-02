@@ -6,7 +6,23 @@ from .forms import TaskForm
 
 def get_tasks(request):
     """ view for main tasks list """
-    tasks = Task.objects.all()
+    # task filtering
+    filter = 'All'
+    if request.GET:
+        if 'complete' in request.GET:
+            tasks = Task.objects.filter(done=True) or None
+            filter = 'Complete'
+        elif 'incomplete' in request.GET:
+            tasks = Task.objects.filter(done=False) or None
+            filter = 'Incomplete'
+        elif 'urgent' in request.GET:
+            tasks = Task.objects.filter(urgent=True) or None
+            filter = 'Urgent'
+        else:
+            # something's gone wrong, just show all tasks
+            tasks = Task.objects.all()
+    else:
+        tasks = Task.objects.all()
     colour = ColourTheme.objects.all()
     add_task_form = TaskForm()
     if request.method == 'POST':
@@ -25,6 +41,7 @@ def get_tasks(request):
     context = {
         'tasks': tasks,
         'colour': colour[0],
+        'filter': filter,
         'add_task_form': add_task_form,
     }
     return render(request, 'tasks/tasks.html', context)
