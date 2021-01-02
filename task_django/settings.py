@@ -24,7 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+development = os.environ.get('DEVELOPMENT', False)
+DEBUG = development
 
 if development:
     ALLOWED_HOSTS = ['localhost']
@@ -81,7 +83,7 @@ if development:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': BASE_DIR + '/' + 'db.sqlite3',
         }
     }
 else:
