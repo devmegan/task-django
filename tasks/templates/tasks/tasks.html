@@ -110,7 +110,7 @@
                     <div>
                         <div class="dropdown">
                             <button class="btn lead text-uppercase spaced-2 mt-4 mb-1 px-0 text-muted" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ filter }} Tasks ({{items | length }}) <i class="fas fa-chevron-down"></i>
+                                {{ filter }} Tasks ({{tasks | length }}) <i class="fas fa-chevron-down"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item text-muted text-uppercase spaced-1" href="{% url 'tasks' %}"><small>All</small></a>
@@ -120,29 +120,29 @@
                             </div>
                         </div>               
                     </div>
-                    {% for item in items %}
+                    {% for task in tasks %}
                     <div class="card mb-2">
                         <div class="card-body">
                             <form method="POST" class="d-flex justify-content-between">
                             {% csrf_token %}
                                 <div class="d-inline">
-                                    {% if item.done %}
-                                    <a href="/toggle/{{ item.id }}"><i class="far fa-check-square text-success px-2"></i></a>
+                                    {% if task.done %}
+                                    <a href="/toggle/{{ task.id }}"><i class="far fa-check-square text-success px-2"></i></a>
                                     {% else %}
-                                    {% if item.urgent %}
-                                    <a href="/toggle/{{ item.id }}" class="px-1"><i class="fas fa-exclamation text-danger px-2"></i></a>
+                                    {% if task.urgent %}
+                                    <a href="/toggle/{{ task.id }}" class="px-1"><i class="fas fa-exclamation text-danger px-2"></i></a>
                                     {% else %}
-                                    <a href="/toggle/{{ item.id }}"><i class="far fa-square text-warning px-2"></i></a>
+                                    <a href="/toggle/{{ task.id }}"><i class="far fa-square text-warning px-2"></i></a>
                                     {% endif %}
                                     {% endif %}
-                                    <input type="text" required class="card-input m-0 px-2 d-inline lead text-uppercase spaced-1 border-0" value="{{ item.name }}" id="{{item.name}}" name="taskNewName" >
+                                    <input type="text" required class="card-input m-0 px-2 d-inline lead text-uppercase spaced-1 border-0" value="{{ task.name }}" id="{{task.name}}" name="taskNewName" >
                                 </div>
                                 <div class="d-none update-task-btn d-inline">
-                                    <input type="hidden" name="taskId" id="taskID" value="{{ item.id }}">
+                                    <input type="hidden" name="taskId" id="taskID" value="{{ task.id }}">
                                     <button class="btn btn-sm btn-secondary px-2 text-uppercase spaced-1" type="submit" value="submit">Update</button>
                                 </div>
                                 <div class="card-btns">
-                                    <a href="/delete/{{ item.id }}"><i class="fas fa-trash text-muted"></i></a>
+                                    <a href="/delete/{{ task.id }}"><i class="fas fa-trash text-muted"></i></a>
                                 </div>
                             </form>
                         </div>
