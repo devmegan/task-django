@@ -56,3 +56,8 @@ body {
     height: 12vh;
     width: 100%;
 }
+
+/* hover effects */
+#add-task-card:hover {
+    cursor: pointer;
+}
