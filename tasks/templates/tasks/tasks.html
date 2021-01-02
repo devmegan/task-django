@@ -9,10 +9,77 @@
     <title>Tasks | Django</title>
 </head>
  <body>
+    <!-- colour theme modal -->
+    <div class="modal fade" id="colourThemeModal" tabindex="-1" role="dialog" aria-labelledby="colourThemeModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="d-flex justify-content-end">
+                    <button class="btn pb-0 pt-1" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times text-muted pb-0"></i>
+                    </button>
+                </div>
+            <div class="modal-header pt-0">
+            <h5 class="modal-title text-muted display-6">Colour Theme</h5>
+            </div>
+        <div class="modal-body">
+            <div class="row no-gutters">
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1552688419-9949ce9dd731?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="red" alt="red" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="pink" alt="pink" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1519017920617-b77f448b702b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" id="orange" alt="orange" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1522781063645-d5e4fb3e19aa?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=967&q=80" id="yellow" alt="yellow" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1566807387450-b74aea0e727e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" id="green" alt="green" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1033&q=80" id="blue" alt="blue" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1551043047-1d2adf00f3fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" id="teal" alt="teal" class="colour-img my-2">
+                </div>    
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1594284487150-54d64729129c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="purple" alt="purple" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1502947830258-6ad0b35bb348?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="grey" alt="grey" class="colour-img my-2">
+                </div>
+            <div class="col-3">
+                <img src="https://images.unsplash.com/photo-1592342632531-6f60a2576ab8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="black" alt="black" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1600024756649-a20bc91adfbb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" id="white" alt="white" class="colour-img my-2">
+                </div>
+                <div class="col-3">
+                    <img src="https://images.unsplash.com/photo-1587586291914-bdbe84ec1416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" id="rainbow" alt="rainbow" class="colour-img my-2">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="colour" value="green" id="newColour">
+                <button type="submit" value="submit" class="btn btn-secondary text-uppercase spaced-1 px-5">Save</button>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
     <div class="container-fluid page-container theme-yellow">
         <div class="row no-gutters">
-            <div class="col-10 col-offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 bg-white">
+            <div class="col-10 col-offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 bg-white tasks-container">
                 <div class="text-center py-4">
+                    <div class="d-flex justify-content-end pt-2">
+                        <button class="btn" data-toggle="modal" data-target="#colourThemeModal">
+                            <i class="fas fa-palette text-muted" data-toggle="tooltip" data-placement="top" title="Change Colour Theme"></i>
+                        </button>
+                    </div>
                     <h1 class="display-4 text-uppercase">Tasks</h1>
                 </div>
                 <div>
@@ -43,6 +110,9 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    
     <script src="https://kit.fontawesome.com/7268da00b7.js" crossorigin="anonymous"></script>
 </body>
 </html>
