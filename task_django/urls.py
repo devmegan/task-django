@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasks.views import get_tasks
+from tasks.views import get_tasks, toggle_status, delete_task
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_tasks, name='tasks'),
+    path('toggle/<task_id>', toggle_status, name='toggle'),
+    path('delete/<task_id>', delete_task, name='delete'),
 ]

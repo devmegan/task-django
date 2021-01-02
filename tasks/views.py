@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm
 # Create your views here.
@@ -19,3 +19,16 @@ def get_tasks(request):
         'add_task_form': add_task_form,
     }
     return render(request, 'tasks/tasks.html', context)
+
+
+def toggle_status(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    task.done = not task.done  # invert task status
+    task.save()
+    return redirect('tasks')
+
+
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    task.delete()
+    return redirect('tasks')
