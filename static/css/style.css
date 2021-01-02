@@ -70,3 +70,11 @@ body {
 .spaced-2 {
     letter-spacing: 2px;
 }
+
+/* forms */
+@media only screen and (max-width: 380px) {
+    .card-input,
+    #add-task-p {
+        font-size: calc(12px + 0.5vw);
+    }
+}
