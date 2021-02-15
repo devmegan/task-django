@@ -73,33 +73,34 @@
         </div>
         <!-- add task modal -->
         <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="d-flex justify-content-end">
-                    <button class="btn pb-0 pt-1" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times text-muted pb-0"></i>
-                    </button>
-                </div>
-                <div class="modal-header pt-0">
-                    <h5 class="modal-title text-muted display-6 text-uppercase spaced-2"><small>Add Task</small></h5>
-                </div>
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="modal-body text-uppercase spaced-2">
-                    {{ add_task_form.as_p }}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn pb-0 pt-1" data-dismiss="modal" aria-label="Close">
+                            <i class="fas fa-times text-muted pb-0"></i>
+                        </button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary px-5 text-uppercase spaced-1" value="submit">Add</button>
+                    <div class="modal-header pt-0">
+                        <h5 class="modal-title text-muted display-6 text-uppercase spaced-2"><small>Add Task</small></h5>
                     </div>
-                </form>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="modal-body text-uppercase spaced-2">
+                        {{ add_task_form.as_p }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary px-5 text-uppercase spaced-1" value="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
         <!--body-->
         <div class="container-fluid page-container theme-{{ colour }}">
             <div class="row no-gutters">
                 <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 tasks-container">
                     <div class="d-flex justify-content-end pt-2">
+                        <!-- trigger colour theme modal-->
                         <button class="btn" data-toggle="modal" data-target="#colourThemeModal">
                             <i class="fas fa-palette text-muted" data-toggle="tooltip" data-placement="top" title="Change Colour Theme"></i>
                         </button>
@@ -109,6 +110,7 @@
                     </div>
                     <div>
                         <div class="dropdown">
+                        <!-- task status filters-->
                             <button class="btn lead text-uppercase spaced-2 mt-4 mb-1 px-0 text-muted" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ filter }} Tasks ({{tasks | length }}) <i class="fas fa-chevron-down"></i>
                             </button>
@@ -121,6 +123,7 @@
                         </div>               
                     </div>
                     {% for task in tasks %}
+                    <!-- render out existing tasks/tasks also act as inline forms onclick -->
                     <div class="card mb-2">
                         <div class="card-body">
                             <form method="POST" class="d-flex justify-content-between">

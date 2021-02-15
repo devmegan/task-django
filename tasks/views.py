@@ -27,7 +27,6 @@ def get_tasks(request):
     else:
         tasks = Task.objects.all()
 
-
     if request.method == 'POST':
         # add a task
         if 'name' in request.POST:
@@ -60,6 +59,7 @@ def get_tasks(request):
 
 
 def toggle_status(request, task_id):
+    """ view to toggle tasks complete status """
     task = get_object_or_404(Task, id=task_id)
     task.done = not task.done  # invert task status
     task.save()
@@ -67,6 +67,7 @@ def toggle_status(request, task_id):
 
 
 def delete_task(request, task_id):
+    """ view to completely delete task from list """
     task = get_object_or_404(Task, id=task_id)
     task.delete()
     return redirect('tasks')
