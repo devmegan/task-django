@@ -142,7 +142,10 @@
                                 </div>
                                 <div class="d-none update-task-btn d-inline">
                                     <input type="hidden" name="taskId" id="taskID" value="{{ task.id }}">
-                                    <button class="btn btn-sm btn-secondary px-2 text-uppercase spaced-1" type="submit" value="submit">Update</button>
+                                    <button class="btn btn-sm btn-secondary px-2 text-uppercase spaced-1" type="submit" value="submit">
+                                        <span class="d-inline d-md-none"><i class="fas fa-check"></i></span>
+                                        <span class="d-none d-md-inline">Update</span>
+                                    </button>
                                 </div>
                                 <div class="card-btns">
                                     <a href="/delete/{{ task.id }}"><i class="fas fa-trash text-muted"></i></a>
